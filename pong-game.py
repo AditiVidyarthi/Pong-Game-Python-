@@ -8,7 +8,7 @@ start=False
 scrn=t.Screen()
 scrn.bgcolor("black")
 scrn.title("Pong Game")
-scrn.setup(width=800,height=600)
+scrn.setup(width=800,height=700)
 scrn.tracer(0)
 
 #create left paddle
@@ -121,14 +121,17 @@ def right_paddle_down():
 #upgrading speed
 def speed_increase():
     global speed
-    if speed<4:
-        speed+=1
+    if speed < 8:
+        speed += 1
+    else:
+        speed = 8  
 
 def speed_decrease():
     global speed
-    if speed>0:
-        speed-=1
-
+    if speed > 0:
+        speed -= 1
+    else:
+        speed = 0 
     
 #Asign keys
 scrn.listen()
@@ -195,5 +198,5 @@ if (playerAscore==10):
 else:
     pen.write("PlayerB wins",align="center",font=("Arial",30,"normal "))
 
-
-
+scrn.update()  # Update one last time to ensure the screen is up-to-date
+scrn.mainloop()
